@@ -2,9 +2,17 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>BookLike</strong> by <a href="/">Book Crew</a>. The webpage is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        <strong>BookLike</strong> by <a href="/">Book Crew</a>. The webpage is financed by
+        <a href="https://www.telekom.com/en">Deutsche Telekom</a>.
+      </p>
+      <p>
+        <font-awesome-icon icon="fa-brands fa-square-twitter" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-square-facebook" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-square-github" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-linkedin" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-tiktok" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-instagram" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-twitch" id="socialIcons"/>
       </p>
     </div>
   </footer>
@@ -17,5 +25,7 @@ export default {
 </script>
 
 <style scoped>
-
+ #socialIcons {
+   padding-left: 5px;
+ }
 </style>

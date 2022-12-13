@@ -5,7 +5,10 @@ import store from "./store";
 import "bulma";
 import "bulma/css/bulma.css";
 
+import { FontAwesomeIcon } from './plugins/font-awesome'
+
 createApp(App)
     .use(router)
     .use(store)
+    .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app');
