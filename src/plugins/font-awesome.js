@@ -7,7 +7,10 @@ import {
     faSignInAlt,
     faSignOutAlt,
     faUserSecret,
-    faIcons
+    faIcons,
+    faUserGraduate,
+    faLock,
+    faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 import {
     faSquareTwitter,
@@ -33,7 +36,10 @@ library.add(
     faSquareGithub,
     faLinkedin,
     faTiktok,
-    faInstagram
+    faInstagram,
+    faUserGraduate,
+    faLock,
+    faEnvelope
 );
 
 export { FontAwesomeIcon };

@@ -6,13 +6,13 @@
         <a href="https://www.telekom.com/en">Deutsche Telekom</a>.
       </p>
       <p>
-        <font-awesome-icon icon="fa-brands fa-square-twitter" id="socialIcons"/>
-        <font-awesome-icon icon="fa-brands fa-square-facebook" id="socialIcons"/>
-        <font-awesome-icon icon="fa-brands fa-square-github" id="socialIcons"/>
-        <font-awesome-icon icon="fa-brands fa-linkedin" id="socialIcons"/>
-        <font-awesome-icon icon="fa-brands fa-tiktok" id="socialIcons"/>
-        <font-awesome-icon icon="fa-brands fa-instagram" id="socialIcons"/>
-        <font-awesome-icon icon="fa-brands fa-twitch" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-square-twitter" size="2x" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-square-facebook" size="2x" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-square-github" size="2x" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-linkedin" size="2x" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-tiktok" size="2x" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-instagram" size="2x" id="socialIcons"/>
+        <font-awesome-icon icon="fa-brands fa-twitch" size="2x" id="socialIcons"/>
       </p>
     </div>
   </footer>

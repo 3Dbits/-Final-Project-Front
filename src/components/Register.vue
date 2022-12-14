@@ -1,5 +1,5 @@
 <script>
-import { Form, Field, ErrorMessage } from "vee-validate";
+import {ErrorMessage, Field, Form} from "vee-validate";
 import * as yup from "yup";
 import Profile from "@/components/Profile.vue";
 
@@ -35,6 +35,9 @@ export default {
       loading: false,
       message: "",
       schema,
+      isHovering1: false,
+      isHovering2: false,
+      isHovering3: false,
     };
   },
   computed: {
@@ -77,47 +80,75 @@ export default {
 
 <template>
 
-      <Form @submit="handleRegister" :validation-schema="schema">
-        <div v-if="!successful">
-          <p>
-            <label for="username">Username</label>
-            <Field name="username" type="text"/>
-            <ErrorMessage name="username"/>
-          </p>
+  <Form :validation-schema="schema" class="box" @submit="handleRegister">
 
-          <p>
-            <label for="email">Email</label>
-            <Field name="email" type="email"/>
-            <ErrorMessage name="email"/>
-          </p>
-
-          <p>
-            <label for="password">Password</label>
-            <Field name="password" type="password"/>
-            <ErrorMessage name="password"/>
-          </p>
-
-          <p>
-            <button :disabled="loading">
-              <span
-                  v-show="loading"
-              ></span>
-              Sign Up
-            </button>
-          </p>
-
-        </div>
-      </Form>
-
-      <div
-          v-if="message"
-      >
-<!--          :class="successful ? 'alert-success' : 'alert-danger'"-->
-<!--      >-->
+    <div class="field">
+      <div v-if="message" class="notification is-danger" role="alert">
+        <button class="delete" @click='message = ""'></button>
         {{ message }}
       </div>
+    </div>
+
+    <div v-if="!successful">
+      <div class="field">
+        <label class="label" for="username">Username</label>
+        <p class="control has-icons-left has-icons-right" @mouseover="isHovering1 = true" @mouseout="isHovering1 = false">
+          <Field class="input is-rounded" name="username" placeholder="IvanHorvatić" type="text"/>
+          <span class="icon is-small is-left">
+            <font-awesome-icon icon="fa-solid fa-user-graduate" v-if="!isHovering1"/>
+            <font-awesome-icon icon="fa-solid fa-user-graduate" beat v-if="isHovering1"/>
+            </span>
+        </p>
+        <ErrorMessage name="username"/>
+      </div>
+
+      <div class="field">
+        <label class="label" for="email">Email</label>
+        <p class="control has-icons-left has-icons-right" @mouseover="isHovering2 = true" @mouseout="isHovering2 = false">
+          <Field class="input is-rounded" name="email" placeholder="IvanHorvatić@t.ht.hr" type="email"/>
+          <span class="icon is-small is-left">
+            <font-awesome-icon icon="fa-solid fa-envelope" v-if="!isHovering2"/>
+            <font-awesome-icon icon="fa-solid fa-envelope" beat v-if="isHovering2"/>
+            </span>
+        </p>
+        <ErrorMessage name="email"/>
+      </div>
+
+      <div class="field">
+
+        <label class="label" for="password">Password</label>
+        <p class="control has-icons-left has-icons-right" @mouseover="isHovering3 = true" @mouseout="isHovering3 = false">
+          <Field class="input is-rounded" name="password" placeholder="●●●●●●●●●●" type="password"/>
+          <span class="icon is-small is-left">
+            <font-awesome-icon icon="fa-solid fa-lock" v-if="!isHovering3"/>
+            <font-awesome-icon icon="fa-solid fa-lock" beat v-if="isHovering3"/>
+            </span>
+        </p>
+        <ErrorMessage name="password"/>
+      </div>
+
+      <p>
+        <button :disabled="loading" class="button is-primary is-rounded">
+            <span
+                v-show="loading"
+            ></span>
+          <span>Sign Up</span>
+        </button>
+      </p>
+
+      <p style="text-align: center">
+        Already on BookLike?
+        <router-link to="/login">Log in!</router-link>
+      </p>
+
+    </div>
+  </Form>
+
 </template>
 
 <style scoped>
-
+.box {
+  max-width: 50%;
+  margin: auto;
+}
 </style>
