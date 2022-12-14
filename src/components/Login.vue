@@ -105,7 +105,13 @@ export default {
 
 <style scoped>
   .box {
-    max-width: 50%;
+    max-width: 33%;
     margin: auto;
+  }
+  @media screen and (max-width: 1200px) {
+    .box {
+      max-width: 50%;
+      margin: auto;
+    }
   }
 </style>
