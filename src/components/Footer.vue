@@ -6,10 +6,7 @@
         <a href="https://www.telekom.com/en">Deutsche Telekom</a>.
       </p>
       <p>
-        <span @mouseover="isHovering11 = true" @mouseout="isHovering11 = false">
-          <font-awesome-icon icon="fa-brands fa-square-twitter" size="2x" id="socialIcons" v-if="!isHovering11"/>
-          <font-awesome-icon icon="fa-brands fa-square-twitter" size="2x" id="socialIcons" flip v-if="isHovering11"/>
-        </span>
+          <font-awesome-icon icon="fa-brands fa-square-twitter" size="2x" id="socialIcons" class="fa-flip" @mouseover="changeClass"/>
         <span @mouseover="isHovering12 = true" @mouseout="isHovering12 = false">
           <font-awesome-icon icon="fa-brands fa-square-facebook" size="2x" id="socialIcons" v-if="!isHovering12"/>
           <font-awesome-icon icon="fa-brands fa-square-facebook" size="2x" id="socialIcons" flip v-if="isHovering12"/>
@@ -40,17 +37,38 @@
 </template>
 
 <script>
+
 export default {
   name: "Footer",
   data() {
     return {
-      isHovering11: false,
+      isHovering11: new Boolean(false),
       isHovering12: false,
       isHovering13: false,
       isHovering14: false,
       isHovering15: false,
       isHovering16: false,
       isHovering17: false,
+    }
+  },
+  methods: {
+    changeStateAfter(someValue){
+      someValue.valueOf = true;
+      // console.log(this.isHovering11);
+      // someValue = true;
+      // console.log(this.isHovering11);
+      setTimeout(
+          function () {
+            someValue.valueOf = false;
+          }, 2000);
+    },
+    onMouseEnter(event) {
+      console.log(event);
+      event.target.setAttribute("flip");
+      setTimeout(
+          function () {
+            event.target.removeAttribute("flip");
+          }, 2000);
     }
   }
 }

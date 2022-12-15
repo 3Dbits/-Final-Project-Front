@@ -3,7 +3,7 @@
     <img id="image" alt="index book picture" src="/jaredd-craig-HH4WBGNyltc-unsplash.jpg">
     <div class="card has-background centered">
       <div class="card-content">
-        <p class="title has-text-white">
+        <p class="has-text-white title">
           “That’s the thing about books. They let you travel without moving your feet.”
         </p>
         <p class="subtitle has-text-white">
@@ -46,6 +46,9 @@ export default {
 <style scoped>
 img {
   width: 100%;
+}
+.title, .subtitle{
+  text-shadow: 2px 2px 2px black;
 }
 .container2 {
   position: relative;
