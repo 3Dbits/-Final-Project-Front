@@ -14,7 +14,7 @@
 <!--      </div>-->
 <!--    </div>-->
 <!--    /////////////-->
-      <router-link :to='"/post?id=" + post.id' >
+      <router-link :to="{name: 'PostPage', query: {id: post.id}}">
     <article class="media">
       <div class="media-left">
         <figure class="image is-64x64">

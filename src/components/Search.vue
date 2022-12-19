@@ -15,18 +15,26 @@
       </p>
     </div>
       <p class="panel-tabs">
-        <a class="is-active">Title</a>
-        <a>Author</a>
-        <a>ISBN</a>
+        <a :class="searchWay1" @click="searchTerm">Title</a>
+        <a :class="searchWay2" @click="searchTerm">Author</a>
+        <a :class="searchWay3" @click="searchTerm">ISBN</a>
       </p>
 
-      <router-link :to='"/post?isbn=" + book.isbn' class="panel-block is-active" v-for="book in books" :key="book.id">
-    <span class="panel-icon is-size-2">
+      <router-link :to="{name: 'PostPage', query: {isbn: book.isbn}}" class="panel-block is-active" v-for="book in books" :key="book.id">
+    <span class="panel-icon is-size-1">
        <img :src=book.smallThumbnail alt="bookcover" v-if='book.smallThumbnail !== "none"'>
+       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png" alt="bookcover" v-if='book.smallThumbnail === "none"'>
     </span>
-        <strong>Title: </strong>{{ book.title }}
-        <strong>Author: </strong>{{ book.authors[0].name }}
+        <div><strong>Title: </strong>{{ book.title }}</div>
+        <div v-if="book.authors[0].name !== undefined"><strong> Author: </strong>{{ book.authors[0].name }}</div>
       </router-link>
+
+      <a class="panel-block is-active" v-if="noBook">
+    <span class="panel-icon is-size-1">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzB0JclxHhto76WHFWYNBoqs785MCJHadtkg&usqp=CAU" alt="bookcover">
+    </span>
+        <strong>No book found! </strong>
+      </a>
 
       <div class="panel-block">
         <button class="button is-link is-outlined is-fullwidth" type="submit">
@@ -48,6 +56,10 @@ export default {
       books: [],
       urlAddOn: "?bookName=",
       searchTitle: "Search",
+      searchWay1: "is-active",
+      searchWay2: "2",
+      searchWay3: "3",
+      noBook: false,
     };
   },
   methods: {
@@ -59,11 +71,39 @@ export default {
           headers: authHeader()
         });
         this.books = await response.json();
+        this.noBook = this.books[0] === undefined;
       } catch (error) {
         console.log("Error=", error);
       }
     },
-    getString(value) {
+    searchTerm(e) {
+      // console.log(e);
+      // console.log(e.target.attributes[0].nodeValue);
+      if (e.target.attributes[0].nodeValue === "is-active") {
+        console.log("is active, pa nista")
+        return;
+      }
+      if (e.target.attributes[0].nodeValue === "2") {
+        this.searchWay1 = "1";
+        this.searchWay3 = "3";
+        this.urlAddOn = "?bookAuthor=";
+        this.searchWay2 = "is-active";
+        return;
+      }
+      if (e.target.attributes[0].nodeValue === "3") {
+        this.searchWay1 = "1";
+        this.searchWay2 = "2";
+        this.urlAddOn = "?bookIsbn=";
+        this.searchWay3 = "is-active";
+        return;
+      }
+      if (e.target.attributes[0].nodeValue === "1") {
+        this.searchWay2 = "2";
+        this.searchWay3 = "3";
+        this.urlAddOn = "?bookName=";
+        this.searchWay1 = "is-active";
+        return;
+      }
 
     }
   }
