@@ -30,17 +30,15 @@ components: {
       </div>
     </div>
     <article class="tile is-child notification is-danger">
-      <p class="title">User posts</p>
-      <h5> List of user posts</h5>
 
       <postList></postList>
+
     </article>
   </div>
   <div class="tile is-parent">
     <article class="tile is-child notification is-success">
       <div class="content">
-        <p class="title">My friends</p>
-        <p class="subtitle">Friend List</p>
+        <h5>My friends</h5>
 
         <FriendList></FriendList>
 

@@ -6,14 +6,15 @@ export default {
   name: "Postlist",
   data() {
     return {
-      posts:{},
+      posts: [],
+      userInfos: {},
     }
   },
   methods: {
     async getPosts() {
       try {
 // GET
-        let response = await fetch("http://localhost:8080/api/post/", {
+        let response = await fetch("/api/post/allProfile", {
           headers: authHeader()
         });
         this.posts = await response.json();
@@ -21,22 +22,40 @@ export default {
       } catch (error) {
         console.log("Error", error);
       }
-    }
+    },
+    async getUserInfos() {
+      // Fetch or Axios
+      try {
+        // Fetch returns a promise ( asynchronous)
+        let response = await fetch("/api/userinfo/", {
+          headers: authHeader()
+        });
+        this.userInfos = await response.json();
+      } catch (error) {
+        console.log("Error=", error);
+      }
+    },
+  },
+  created() {
+    this.getPosts()
   }
 }
 </script>
 
 <template>
   <div>
-    <h3 class="title">Recent Posts</h3>
-
-    <div v-for="post in posts" :key="post.id" class="box">
-
-      <h2 class="subtitle">{{ post.creation_date }}</h2>
-
-      <p>{{ post.content }}</p>
+  <h1>List of Posts</h1>
+  <ul>
+    <li v-for="post in posts" :key="post.id">
+      <h3> Book title: {{ post.book.title}} </h3>
+      <h5> Post content: {{ post.content }} </h5>
+      <h6> Post author: {{post.userInfo.firstName}} {{post.userInfo.lastName}}</h6>
+      <br>
+    </li>
+  </ul>
     </div>
-  </div>
+
+
   </template>
 
   <style>

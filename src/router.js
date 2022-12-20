@@ -3,6 +3,11 @@ import Home from "./components/Home.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
 import IndexPage from "@/views/IndexPage.vue";
+import UserInfo from "@/components/UserInfo.vue";
+import PostPage from "@/views/PostPage.vue";
+import SearchPage from "@/views/SearchPage.vue";
+import ProfilePage from "@/views/ProfilePage.vue";
+import PostList from "@/components/PostList.vue";
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")

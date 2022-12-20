@@ -20,7 +20,7 @@ export default {
       // Fetch or Axios
       try {
         // Fetch returns a promise ( asynchronous)
-        let response = await fetch("http://localhost:8080/api/userinfo/", {
+        let response = await fetch("/api/userinfo/", {
           headers: authHeader()
         });
         this.userInfos = await response.json();
