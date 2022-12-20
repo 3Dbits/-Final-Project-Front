@@ -2,17 +2,21 @@ import { createWebHistory, createRouter } from "vue-router";
 import Home from "./components/Home.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
-import IndexPage from "@/views/IndexPage.vue";
+import ProfilePage from "./views/ProfilePage.vue"
+import PostList from "./components/PostList.vue"
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")
 const BoardUser = () => import("./components/BoardUser.vue")
+const UserInfo = () => import("./components/UserInfo.vue")
+
+
 
 const routes = [
     {
         path: "/",
         name: "home",
-        component: IndexPage,
+        component: Home,
     },
     {
         path: "/home",
@@ -39,10 +43,24 @@ const routes = [
         component: BoardAdmin,
     },
     {
+        path:"/userInfo/:user.id",
+        component: UserInfo
+    },
+    {
         path: "/user",
         name: "user",
         // lazy-loaded
         component: BoardUser,
+    },
+    {
+        path: "/userInfo",
+        name: "ProfilePage",
+        component: ProfilePage,
+    },
+    {
+        path: "/postlist",
+        name: "Postlist",
+        component: PostList,
     },
 ];
 
