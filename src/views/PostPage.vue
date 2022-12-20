@@ -61,7 +61,7 @@
               <li><span class="btn btn-outline-primary ">Page number : {{ post.book?.pageNumber }}</span></li>
               <li><span class="btn btn-outline-primary ">Language : {{ post.book?.language }}</span></li>
               <a v-if="post.book?.pdf!=undefined" :href= post.book?.pdf target="_blank"><figure class="image is-64x64">
-                <img alt="Image" target="_blank" src="https://cdn1.iconfinder.com/data/icons/education-flat-icons-shadow/96/50-512.png"/>
+                <img alt="Image" src="https://cdn1.iconfinder.com/data/icons/education-flat-icons-shadow/96/50-512.png"/>
               </figure>
               </a>
             </section>
@@ -77,7 +77,7 @@
                <br>
             <h1>{{ books[0]?.title }}</h1>
              <h1>  {{$route.params.id}}</h1>
-            <p>{{ post.content }}</p>
+            <h3>{{ post.content }}</h3>
 
 
 <!--              /////POST//////-->
@@ -90,13 +90,13 @@
 <!--                ///ako nema posta otvori box za upis novog post////////////-->
                     <div v-if="postParams === undefined">
                       <div class="column md-6">
-                        <form action="#" @submit.prevent="getPost">
-                          <div class="field">
-                            <label class="label is-medium" for="post">Write Post about : {{ books[0]?.title }}</label>
-                            <textarea id="post" class="textarea input is-warning" v-model="post1.content"></textarea>
-                          </div>
-                          <a class="btn btn-primary w-100 rounded mt-2 is-alt" href="#" type="submit" value="Create New Post"/>
-                        </form>
+                          <form @submit.prevent="getPost">
+                            <div class="field">
+                              <label class="label is-medium" for="post">Write Post about : <strong>{{ books[0]?.title }}</strong></label>
+                              <textarea id="post"  class="textarea input is-warning " v-model="post.content"></textarea>
+                            </div>
+                            <input class="btn btn-primary w-100 rounded mt-2 is-alt"  type="submit" href="#" value="Create New Post"/>
+                          </form>
                       </div>
                     </div>
                   </div>
@@ -127,7 +127,7 @@
                   <div class="column md-6">
                     <form @submit.prevent="getComment">
                       <div class="field">
-                        <label class="label is-medium" for="post">Comment Post about : {{ books[0]?.title }}</label>
+                        <label class="label is-medium" for="post">Comment Post about : {{ post.book?.title }} </label>
                         <textarea id="content"  class="textarea2 input is-warning " v-model="comment.content"></textarea>
                       </div>
                       <input class="btn btn-primary w-100 rounded mt-2 is-alt"  type="submit" href="#" value="Send now"/>
@@ -251,9 +251,14 @@ export default {
       try {
         // Fetch returns a promise ( asynchronous)
         let response1 = await fetch("/api/post/" + this.postParams, {
-          headers: authHeader()
+          method: "POST",
+          headers: authHeader(),
+          body: JSON.stringify({
+            content: this.post.content
+          }),
         });
-        this.post = await response1.json();
+        this.post.content = await response1.json();
+        this.getPosts()
       } catch (error) {
         console.log("Error=", error);
       }
@@ -274,24 +279,7 @@ export default {
       } catch (error) {
         console.log("Error=", error);
       }
-    },
-    async getPost() {
-      // Fetch or Axios
-      try {
-        // Fetch returns a promise ( asynchronous)
-        let response3 = await fetch("/api/post/" + this.postParams, {
-          method: "POST",
-          headers: authHeader(),
-          body: JSON.stringify({
-            content: this.post.content
-          }),
-        });
-        this.post2 = await response3.json();
-        this.getPosts();
-      } catch (error) {
-        console.log("Error=", error);
-      }
-    },
+    }
   },
   created() {
     // this.getBooks();
