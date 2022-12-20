@@ -32,13 +32,13 @@
             <span class="media-right">
 
 
-              <img v-if="isbnParams!==undefined && books[0].smallThumbnail!=='none'" :src=books[0].smallThumbnail alt="bookcover">
-              <img v-if="isbnParams!==undefined && post.book.smallThumbnail==='none'"
+              <img v-if="isbnParams!==undefined && books[0].smallThumbnail !== 'none'" :src=books[0].smallThumbnail alt="bookcover">
+              <img v-if="isbnParams===undefined && post.book.smallThumbnail === 'none'"
                    alt="dummypicture" src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
 <!--&#45;&#45;dodala usklicnike prije tocke kako bi nastavio provjeru bez da prvo zna da postoji  ima&#45;&#45;-->
-              <img v-if="isbnParams===undefined && books[0]?.smallThumbnail==='none'"
-                   src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
-              <img v-if="isbnParams===undefined && post.book?.smallThumbnail!=='none'" :src=post.book.smallThumbnail alt="bookcover">
+              <img v-if="isbnParams!==undefined && books[0]?.smallThumbnail === 'none'"
+                   alt="dummypicture" src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
+              <img v-if="isbnParams===undefined && post.book?.smallThumbnail !== 'none'" :src=post.book.smallThumbnail alt="bookcover">
             </span>
             </li>
 
@@ -112,7 +112,7 @@
           <!--          Comments-->
 
 
-          <div v-if="post !== undefined" class="box content" style="margin: auto">
+          <div v-if="postParams === ''" class="box content" style="margin: auto">
             <article class="post">
             <span style="text-align: center">
                <br>
@@ -134,6 +134,12 @@
                 </div>
               </div>
             </article>
+
+            <div>
+              <p v-for="commentFrompost in post.comments">
+                {{commentFrompost.content}}
+              </p>
+            </div>
 
 
             <div class="box">
@@ -286,7 +292,7 @@ export default {
 </script>
 <style scoped>
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);*/
 
 * {
   margin: 0;
