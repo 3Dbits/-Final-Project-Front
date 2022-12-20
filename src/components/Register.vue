@@ -26,18 +26,20 @@ export default {
       password: yup
           .string()
           .required("Password is required!")
-          .min(6, "Must be at least 6 characters!")
-          .max(40, "Must be maximum 40 characters!"),
+          .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/, "Password should have min 8 chars, one upercase/lowercase/number"),
       firstName: yup
           .string()
           .required("First name is required!")
-          .min(6, "Must be at least 6 characters!")
+          .min(2, "Must be at least 2 characters!")
           .max(40, "Must be maximum 40 characters!"),
       lastName: yup
           .string()
           .required("Last name is required!")
-          .min(6, "Must be at least 6 characters!")
+          .min(2, "Must be at least 2 characters!")
           .max(40, "Must be maximum 40 characters!"),
+      dateOfBirth: yup
+          .date()
+          .required("Date of birth is required!")
     });
 
     return {
@@ -142,12 +144,12 @@ export default {
 
         <div class="field">
           <label class="label" for="firstName">First Name</label>
-          <p class="control has-icons-left has-icons-right" @mouseout="isHovering3 = false"
-             @mouseover="isHovering3 = true">
-            <Field class="input is-rounded" name="firstName" placeholder="" type="text"/>
+          <p class="control has-icons-left has-icons-right" @mouseout="isHovering4 = false"
+             @mouseover="isHovering4 = true">
+            <Field class="input is-rounded" name="firstName" placeholder="Ivan" type="text"/>
             <span class="icon is-small is-left">
-            <font-awesome-icon v-if="!isHovering3" icon="fa-solid fa-lock"/>
-            <font-awesome-icon v-if="isHovering3" beat icon="fa-solid fa-lock"/>
+            <font-awesome-icon v-if="!isHovering4" icon="fa-solid fa-user-tag"/>
+            <font-awesome-icon v-if="isHovering4" beat icon="fa-solid fa-user-tag"/>
             </span>
           </p>
           <ErrorMessage name="firstName"/>
@@ -155,12 +157,12 @@ export default {
 
         <div class="field">
           <label class="label" for="lastName">Last Name</label>
-          <p class="control has-icons-left has-icons-right" @mouseout="isHovering3 = false"
-             @mouseover="isHovering3 = true">
-            <Field class="input is-rounded" name="lastName" placeholder="" type="text"/>
+          <p class="control has-icons-left has-icons-right" @mouseout="isHovering5 = false"
+             @mouseover="isHovering5 = true">
+            <Field class="input is-rounded" name="lastName" placeholder="Horvatić" type="text"/>
             <span class="icon is-small is-left">
-            <font-awesome-icon v-if="!isHovering3" icon="fa-solid fa-lock"/>
-            <font-awesome-icon v-if="isHovering3" beat icon="fa-solid fa-lock"/>
+            <font-awesome-icon v-if="!isHovering5" icon="fa-solid fa-user-tag"/>
+            <font-awesome-icon v-if="isHovering5" beat icon="fa-solid fa-user-tag"/>
             </span>
           </p>
           <ErrorMessage name="lastName"/>
@@ -168,12 +170,12 @@ export default {
 
         <div class="field">
           <label class="label" for="dateOfBirth">Date of birth</label>
-          <p class="control has-icons-left has-icons-right" @mouseout="isHovering3 = false"
-             @mouseover="isHovering3 = true">
+          <p class="control has-icons-left has-icons-right" @mouseout="isHovering6 = false"
+             @mouseover="isHovering6 = true">
             <Field class="input is-rounded" name="dateOfBirth" placeholder="" type="date"/>
             <span class="icon is-small is-left">
-            <font-awesome-icon v-if="!isHovering3" icon="fa-solid fa-lock"/>
-            <font-awesome-icon v-if="isHovering3" beat icon="fa-solid fa-lock"/>
+            <font-awesome-icon v-if="!isHovering6" icon="fa-solid fa-calendar-days"/>
+            <font-awesome-icon v-if="isHovering6" beat icon="fa-solid fa-calendar-days"/>
             </span>
           </p>
           <ErrorMessage name="dateOfBirth"/>
@@ -181,12 +183,12 @@ export default {
 
         <div class="field">
           <label class="label" for="bookId">Isbn of favorite book</label>
-          <p class="control has-icons-left has-icons-right" @mouseout="isHovering3 = false"
-             @mouseover="isHovering3 = true">
-            <Field class="input is-rounded" name="bookId" placeholder="" type="number"/>
+          <p class="control has-icons-left has-icons-right" @mouseout="isHovering7 = false"
+             @mouseover="isHovering7 = true">
+            <Field class="input is-rounded" name="bookId" placeholder="1234567891" type="number"/>
             <span class="icon is-small is-left">
-            <font-awesome-icon v-if="!isHovering3" icon="fa-solid fa-lock"/>
-            <font-awesome-icon v-if="isHovering3" beat icon="fa-solid fa-lock"/>
+            <font-awesome-icon v-if="!isHovering7" icon="fa-solid fa-book-open-reader"/>
+            <font-awesome-icon v-if="isHovering7" beat icon="fa-solid fa-book-open-reader"/>
             </span>
           </p>
           <ErrorMessage name="bookId"/>
