@@ -17,17 +17,23 @@
       <div class="gridSet">
         <div class="item1">
           <!--        add style to see 2 rows, need to be removed-->
-          <img src="/homepagepic/imgbin_table-bookcase-floating-shelf-furniture-png.png" style="height: 500px">
+          <img src="/Screenshot_358.png" id="firstpic">
         </div>
         <div>
-          <p>
-            Test
-          </p>
+          <br>
+          <br>
+          <br>
+          <br>
+          <h1 class="indexText">
+            Search for your favorite books with our new search function.
+          </h1>
         </div>
         <div>
-          <p>
-            Test
-          </p>
+          <br>
+          <br>
+          <h1 class="indexText">
+            Tell your friends what you think about book and find inspiration four your new book.
+          </h1>
         </div>
         <div class="item2">
           <img src="/homepagepic/kindpng_4808540.png">
@@ -120,6 +126,17 @@ img {
   left: 50%;
   top: 50%;
   transform: translate(0.5%, 20%);
+}
+.indexText {
+  display: grid;
+  font-weight: bolder;
+  font-family: "Helvetica Neue",fantasy;
+  font-size: xx-large;
+  align-content: center;
+}
+#firstpic {
+  max-width: 80%;
+  box-shadow: 1px 1px 2px gray;
 }
 
 @media screen and (max-width: 800px) {

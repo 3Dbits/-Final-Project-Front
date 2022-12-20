@@ -25,8 +25,8 @@
        <img :src=book.smallThumbnail alt="bookcover" v-if='book.smallThumbnail !== "none"'>
        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png" alt="bookcover" v-if='book.smallThumbnail === "none"'>
     </span>
-        <div><strong>Title: </strong>{{ book.title }}</div>
-        <div v-if="book.authors[0].name !== undefined"><strong> Author: </strong>{{ book.authors[0].name }}</div>
+        <div ><strong>Title: </strong>{{ book.title }}</div>
+        <div v-if="book.authors[0].name !== undefined" id="paddingleft"><strong> Author: </strong>{{ book.authors[0].name }}</div>
       </router-link>
 
       <a class="panel-block is-active" v-if="noBook">
@@ -114,5 +114,14 @@ export default {
 .searchForm {
   max-width: 50%;
   margin: auto;
+}
+#paddingleft {
+  margin-left: 80px;
+}
+.panel-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
 </style>

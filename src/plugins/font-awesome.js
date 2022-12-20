@@ -12,7 +12,10 @@ import {
     faLock,
     faEnvelope,
     faMagnifyingGlass,
-    faHandHoldingHeart
+    faHandHoldingHeart,
+    faUserTag,
+    faCalendarDays,
+    faBookOpenReader
 } from "@fortawesome/free-solid-svg-icons";
 import {
     faSquareTwitter,
@@ -43,7 +46,10 @@ library.add(
     faLock,
     faEnvelope,
     faMagnifyingGlass,
-    faHandHoldingHeart
+    faHandHoldingHeart,
+    faUserTag,
+    faCalendarDays,
+    faBookOpenReader
 );
 
 export { FontAwesomeIcon };
