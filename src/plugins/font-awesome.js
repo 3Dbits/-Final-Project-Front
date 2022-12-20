@@ -10,7 +10,12 @@ import {
     faIcons,
     faUserGraduate,
     faLock,
-    faEnvelope
+    faEnvelope,
+    faMagnifyingGlass,
+    faHandHoldingHeart,
+    faUserTag,
+    faCalendarDays,
+    faBookOpenReader
 } from "@fortawesome/free-solid-svg-icons";
 import {
     faSquareTwitter,
@@ -39,7 +44,12 @@ library.add(
     faInstagram,
     faUserGraduate,
     faLock,
-    faEnvelope
+    faEnvelope,
+    faMagnifyingGlass,
+    faHandHoldingHeart,
+    faUserTag,
+    faCalendarDays,
+    faBookOpenReader
 );
 
 export { FontAwesomeIcon };

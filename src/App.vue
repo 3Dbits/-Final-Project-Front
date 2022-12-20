@@ -3,6 +3,8 @@
 
   <router-view/>
 
+  <Footer/>
+
 </template>
 
 <script>

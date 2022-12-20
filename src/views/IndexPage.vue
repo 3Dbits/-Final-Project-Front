@@ -17,17 +17,23 @@
       <div class="gridSet">
         <div class="item1">
           <!--        add style to see 2 rows, need to be removed-->
-          <img src="/homepagepic/imgbin_table-bookcase-floating-shelf-furniture-png.png" style="height: 500px">
+          <img src="/Screenshot_358.png" id="firstpic">
         </div>
         <div>
-          <p>
-            Test
-          </p>
+          <br>
+          <br>
+          <br>
+          <br>
+          <h1 class="indexText">
+            Search for your favorite books with our new search function.
+          </h1>
         </div>
         <div>
-          <p>
-            Test
-          </p>
+          <br>
+          <br>
+          <h1 class="indexText">
+            Tell your friends what you think about book and find inspiration four your new book.
+          </h1>
         </div>
         <div class="item2">
           <img src="/homepagepic/kindpng_4808540.png">
@@ -35,17 +41,28 @@
       </div>
     </div>
   </section>
+
+  <section class="showPicture">
+    <div id="image-track">
+      <img class="image" src="/img-gaetano-1_142151851246.jpg" alt="picture" draggable="false"/>
+      <img class="image" src="/3b47d124002685f2a3c67e47383232c7.jpg" alt="picture" draggable="false"/>
+      <img class="image" src="/invisibleman-1509049531-640x996.jpg" alt="picture" draggable="false"/>
+      <img class="image" src="/bravenewworld.jpg" alt="picture" draggable="false"/>
+      <img class="image" src="/gatsby-original2.jpg" alt="picture" draggable="false"/>
+      <img class="image" src="/ClockworkCovers_0006.jpg" alt="picture" draggable="false"/>
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
-  name: "indexPage"
+  name: "indexPage",
 }
 </script>
 
 <style scoped>
 img {
-  width: 100%;
+  /*width: 100%;*/
 }
 .title, .subtitle{
   text-shadow: 2px 2px 2px black;
@@ -88,6 +105,38 @@ img {
   grid-row-start: 2;
   grid-column-start: 2;
   grid-column-end: 4;
+}
+.showPicture {
+  height: 80vh;
+  width: 100vw;
+  background-color: black;
+  margin: 0rem;
+  overflow: hidden;
+}
+#image-track > .image {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: center;
+}
+#image-track {
+  display: flex;
+  gap: 4vmin;
+  /*position: absolute;*/
+  left: 50%;
+  top: 50%;
+  transform: translate(0.5%, 20%);
+}
+.indexText {
+  display: grid;
+  font-weight: bolder;
+  font-family: "Helvetica Neue",fantasy;
+  font-size: xx-large;
+  align-content: center;
+}
+#firstpic {
+  max-width: 80%;
+  box-shadow: 1px 1px 2px gray;
 }
 
 @media screen and (max-width: 800px) {

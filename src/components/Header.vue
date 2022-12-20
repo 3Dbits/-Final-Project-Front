@@ -19,6 +19,8 @@
       <div class="navbar-start">
           <router-link to="/home" v-if="currentUser" class="navbar-item">Home</router-link>
           <router-link  class="navbar-item" to="/userInfo">About user</router-link>
+          <router-link to="/Search" v-if="currentUser" class="navbar-item">Search Book</router-link>
+
         <div class="navbar-item has-dropdown is-hoverable" v-if="currentUser">
           <a class="navbar-link">
             More
