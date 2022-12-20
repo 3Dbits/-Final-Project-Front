@@ -3,6 +3,10 @@ import Home from "./components/Home.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
 import IndexPage from "@/views/IndexPage.vue";
+import PostPage from "@/views/PostPage.vue";
+import Search from "@/components/Search.vue";
+import HomePage from "@/views/HomePage.vue";
+import SearchPage from "@/views/SearchPage.vue";
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")
@@ -16,7 +20,7 @@ const routes = [
     },
     {
         path: "/home",
-        component: Home,
+        component: HomePage,
     },
     {
         path: "/login",
@@ -43,6 +47,16 @@ const routes = [
         name: "user",
         // lazy-loaded
         component: BoardUser,
+    },
+    {
+        path: "/post",
+        name: "PostPage",
+        component: PostPage,
+    },
+    {
+        path: "/search",
+        name: "SearchPage",
+        component: SearchPage,
     },
 ];
 
