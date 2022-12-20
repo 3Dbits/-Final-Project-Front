@@ -233,7 +233,7 @@ export default {
       // Fetch or Axios
       try {
         // Fetch returns a promise ( asynchronous)
-        let response = await fetch("http://localhost:8080/api/book/search?bookIsbn=" + this.isbnParams, {
+        let response = await fetch("/api/book/search?bookIsbn=" + this.isbnParams, {
           headers: authHeader()
         });
         this.books = await response.json();
@@ -245,7 +245,7 @@ export default {
       // Fetch or Axios
       try {
         // Fetch returns a promise ( asynchronous)
-        let response1 = await fetch("http://localhost:8080/api/post/" + this.postParams, {
+        let response1 = await fetch("/api/post/" + this.postParams, {
           headers: authHeader()
         });
         this.post = await response1.json();
@@ -257,14 +257,13 @@ export default {
       // Fetch or Axios
       try {
         // Fetch returns a promise ( asynchronous)
-        let response2 = await fetch("http://localhost:8080/api/comment/" + this.postParams, {
+        let response2 = await fetch("/api/comment/" + this.postParams, {
               method: "POST",
               headers: authHeader(),
               body: JSON.stringify({
-                content: this.comment.content,
+                content: this.comment.content
               }),
-            },
-        );
+            });
         this.comment2 = await response2.json();
         this.getPosts();
       } catch (error) {
