@@ -14,14 +14,15 @@ components: {
 }
 </script>
 <template>
-  <strong> My profile </strong>
-  <div class="tile is-ancestor">
-    <div class="tile is-vertical is-8">
-      <div class="tile">
-        <div class="tile is-parent is-vertical">
-          <article class="tile is-child notification is-primary">
-            <article class="tile is-child notification is-warning">
-              <userInfo></userInfo>
+<!--  <strong> My profile </strong>-->
+  <div id="widthset">
+    <div class="tile is-ancestor" >
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-primary">
+              <article class="tile is-child notification is-warning">
+                <userInfo></userInfo>
 
 
             </article>
@@ -31,7 +32,7 @@ components: {
     </div>
     <article class="tile is-child notification is-danger">
 
-      <postList></postList>
+        <postList></postList>
 
     </article>
   </div>
@@ -43,7 +44,14 @@ components: {
 
         <FriendList></FriendList>
 
-      </div>
-    </article>
+        </div>
+      </article>
+    </div>
   </div>
 </template>
+<style>
+#widthset {
+  max-width: 80%;
+  margin: auto;
+}
+</style>

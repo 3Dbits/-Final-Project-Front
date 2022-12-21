@@ -1,6 +1,6 @@
 <template>
 <br>
-  <div class="searchForm">
+  <div class="searchForm" id="maxheightset">
   <nav class="panel">
     <p class="panel-heading">
       Search:
@@ -21,10 +21,10 @@
       </p>
 
       <router-link :to="{name: 'PostPage', query: {isbn: book.isbn}}" class="panel-block is-active" v-for="book in books" :key="book.id">
-    <span class="panel-icon is-size-1">
-       <img :src=book.smallThumbnail alt="bookcover" v-if='book.smallThumbnail !== "none"'>
-       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png" alt="bookcover" v-if='book.smallThumbnail === "none"'>
-    </span>
+        <span class="panel-icon is-size-1">
+           <img :src=book.smallThumbnail alt="bookcover" v-if='book.smallThumbnail !== "none"'>
+           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png" alt="bookcover" v-if='book.smallThumbnail === "none"'>
+        </span>
         <div ><strong>Title: </strong>{{ book.title }}</div>
         <div v-if="book.authors[0].name !== undefined" id="paddingleft"><strong> Author: </strong>{{ book.authors[0].name }}</div>
       </router-link>
@@ -55,7 +55,7 @@ export default {
     return {
       books: [],
       urlAddOn: "?bookName=",
-      searchTitle: "Search",
+      searchTitle: "",
       searchWay1: "is-active",
       searchWay2: "2",
       searchWay3: "3",
@@ -123,5 +123,8 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+}
+#maxheightset {
+  min-height: 700px;
 }
 </style>
