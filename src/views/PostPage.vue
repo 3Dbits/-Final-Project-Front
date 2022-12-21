@@ -1,4 +1,4 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <nav class="navbar is-white">
 
     <div class="container">
@@ -34,11 +34,11 @@
 
               <img v-if="isbnParams!==undefined && books[0].smallThumbnail!=='none'" :src=books[0].smallThumbnail
                    alt="bookcover">
-              <img v-if="isbnParams===undefined && post.book?.smallThumbnail==='none'"
+              <img class="image is-128x128" v-if="isbnParams===undefined && post.book?.smallThumbnail==='none'"
                    alt="dummypicture"
                    src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
               <!--dodala usklicnike prije tocke kako bi nastavio provjeru bez da prvo zna da postoji  -->
-              <img v-if="isbnParams!==undefined && books[0]?.smallThumbnail==='none'"
+              <img class="image is-128x128" v-if="isbnParams!==undefined && books[0]?.smallThumbnail==='none'"
                    src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
               <img v-if="isbnParams===undefined && post.book?.smallThumbnail!=='none'" :src=post.book?.smallThumbnail
                    alt="bookcover">
@@ -134,6 +134,7 @@
 
                 <div class="content">
                   <div class="column md-6">
+<!--     //////////////Form for entering comment of Post/////////-->
                     <form @submit.prevent="getComment">
                       <div class="field">
                         <label class="label is-medium" for="post">Comment Post about : {{ post.book?.title }} </label>
@@ -146,8 +147,10 @@
               </div>
             </article>
 
+<!--     ////////Generated comments of post////////////       -->
             <div v-for="commentFromPost in post.comments" :key="post.comments" class="box">
               <article class="media">
+
                 <div class="media-left">
                   <figure class="image is-64x64">
                     <img alt="Image"
@@ -162,30 +165,73 @@
                       <small>{{ post.comment }}</small>
                       <br>
                       <span>{{ commentFromPost.content }}</span>
-
                     </p>
                   </div>
-                </div>
+
                 <nav class="level is-mobile">
                   <div class="level-left">
                     <a aria-label="reply" class="level-item">
                       <span class="icon is-small">
-                      <i aria-hidden="true" class="fas fa-reply"></i>
+                      <font-awesome-icon icon="fa-duotone fa-reply-all"/>
                       </span>
                     </a>
                     <a aria-label="retweet" class="level-item">
-            <span class="icon is-small">
-              <i aria-hidden="true" class="fas fa-retweet"></i>
-            </span>
+                      <span class="icon is-small">
+                      <font-awesome-icon icon="fa-duotone fa-retweet"/>
+                      </span>
                     </a>
                     <a aria-label="like" class="level-item">
-            <span class="icon is-small">
-              <i aria-hidden="true" class="fas fa-heart"></i>
-            </span>
+                     <span class="icon is-small">
+                     <font-awesome-icon icon="fa-solid fa-hand-holding-heart" />
+                    </span>
                     </a>
                   </div>
-                </nav>
+            </nav>
+          </div>
+
+
+                /////////COMMENTS INSIDE COMMENT///////
+                <!--v-for="commentFromPost in post.comments" :key="post.comments"-->
+                  <div class="box">
+                <article class="media">
+                  <div class="media-left">
+                    <figure class="image is-64x64">
+                      <img alt="Image"
+                           src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/61f1b112-2cb0-40b0-a6b9-9ab92066e5c7/d33mwsf-0dd81126-6d91-4b0d-905c-886a1a41566c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYxZjFiMTEyLTJjYjAtNDBiMC1hNmI5LTlhYjkyMDY2ZTVjN1wvZDMzbXdzZi0wZGQ4MTEyNi02ZDkxLTRiMGQtOTA1Yy04ODZhMWE0MTU2NmMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L1TKNejYQvgjxpf-RG78w_VWYwPL4obeec-BqOB-gmw">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong>{{ commentFromPost.user.firstName }} {{ commentFromPost.user.lastName }}</strong>
+                        <small>{{ commentFromPost.user.username }}</small>
+                        <small>{{ post.comment }}</small>
+                        <br>
+                        <span>{{ commentFromPost.content }}</span>
+                        <br>
+                        <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                      </p>
+                    </div>
+
+                    <article class="media">
+                      Not everyone has spent too much time on Data Structures.
+                      One should not feel superior if they know data structure well.
+                    </article>
+
+                    <article class="media">
+                      The concept of an abstract data type
+                      might be hard for some people to grasp,
+                      but it's really not that difficult.
+                    </article>
+                    </div>
+             </article>
+                  </div>
+
+
+<!--                </nav>-->
+                /////////
               </article>
+
             </div>
           </div>
         </div>
@@ -305,7 +351,7 @@ export default {
 
 </script>
 <style scoped>
-
+@import url(https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
 * {
@@ -441,6 +487,14 @@ body {
   height: 100px;
   text-align: left;
   max-width: 70%;
+}
+
+.a{
+  color:black;
+}
+
+div.adjust{
+  margin-top:50px;
 }
 
 ::-moz-selection {
