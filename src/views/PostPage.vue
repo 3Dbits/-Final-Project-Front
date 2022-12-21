@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-white">
+<!--  <nav class="navbar is-white">
 
     <div class="container">
 
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav>-->
 
   <!--slika unutar aside classa-->
   <section class="container">
@@ -97,38 +97,36 @@
                 <!--                ///ako nema posta otvori box za upis novog post////////////-->
                 <div v-if="postParams === undefined">
                   <div class="column md-6">
-                    <form @submit.prevent="getPost">
+                    <form @submit.prevent="setPost">
                       <div class="field">
                         <label class="label is-medium" for="post">Write Post about : <strong>{{
                             books[0]?.title
                           }}</strong></label>
-                        <textarea id="post" v-model="post.content" class="textarea input is-warning "></textarea>
+                        <textarea id="content" v-model="newPost.content" class="textarea input is-warning "></textarea>
                       </div>
-                      <a class="btn btn-primary w-100 rounded mt-2 is-alt" href="#" type="submit">Create New Post</a>
+                      <input class="btn btn-primary w-100 rounded mt-2 is-alt" type="submit" value="Create New Post">
                     </form>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="media">
+<!--            <div class="media">-->
 
-              <div class="content">
-                <div v-if="post !== undefined">
-                  <div class="column md-6">
-                    {{ post.content }}
-                  </div>
-                </div>
-              </div>
-            </div>
+<!--              <div class="content">-->
+<!--                <div v-if="post !== undefined">-->
+<!--                  <div class="column md-6">-->
+<!--                    {{ post.content }}-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
           </article>
 
           <!--          Comments-->
           <div v-if="postParams !==undefined" class="box content" style="margin: auto">
             <article class="post">
             <span style="text-align: center">
-               <br>
             <h1>{{ books[0]?.title }}</h1>
-               <br>
               </span>
               <div class="media">
 
@@ -146,7 +144,7 @@
               </div>
             </article>
 
-            <div v-for="commentFromPost in post.comments" :key="post.comments" class="box">
+            <div v-for="commentFromPost in post.comments.reverse()" :key="post.comments" class="box">
               <article class="media">
                 <div class="media-left">
                   <figure class="image is-64x64">
@@ -193,6 +191,7 @@
     </div>
   </section>
 
+<!--
 
   //////////////////////////////////////////
   <div class="menu">
@@ -215,6 +214,7 @@
       <a class="blueShadow" href="#">Contact</a>
     </div>
   </div>
+-->
 
 </template>
 <script>
@@ -240,7 +240,9 @@ export default {
         content: ""
       },
       post2: Object,
-
+      newPost: {
+        content: "",
+      },
 
     };
   },
@@ -285,6 +287,25 @@ export default {
       } catch (error) {
         console.log("Error=", error);
       }
+    },
+    async setPost() {
+      // Fetch or Axios
+      try {
+        // Fetch returns a promise ( asynchronous)
+        let response3 = await fetch("/api/post/addNew?bookIsbn=" + this.isbnParams, {
+          method: "POST",
+          headers: authHeader(),
+          body: JSON.stringify({
+            content: this.newPost.content,
+          }),
+        });
+        this.goHome();
+      } catch (error) {
+        console.log("Error=", error);
+      }
+    },
+    goHome() {
+      this.$router.push("/home");
     }
   },
   created() {
@@ -298,7 +319,6 @@ export default {
     } else {
       this.getBooks()
     }
-    ;
   },
 }
 
@@ -306,7 +326,7 @@ export default {
 </script>
 <style scoped>
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);*/
 
 * {
   margin: 0;

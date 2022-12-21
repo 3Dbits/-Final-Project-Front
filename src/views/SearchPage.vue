@@ -1,5 +1,7 @@
 <template>
+  <div id="background">
   <Search/>
+  </div>
 </template>
 
 <script>

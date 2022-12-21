@@ -18,19 +18,20 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
           <router-link to="/home" v-if="currentUser" class="navbar-item">Home</router-link>
-          <router-link  class="navbar-item" to="/userInfo">About user</router-link>
+<!--          <router-link  class="navbar-item" to="/userInfo">About user</router-link>-->
           <router-link to="/Search" v-if="currentUser" class="navbar-item">Search Book</router-link>
+          <router-link to="/friends" v-if="currentUser" class="navbar-item">Follow</router-link>
 
-        <div class="navbar-item has-dropdown is-hoverable" v-if="currentUser">
-          <a class="navbar-link">
-            More
-          </a>
+<!--        <div class="navbar-item has-dropdown is-hoverable" v-if="currentUser">-->
+<!--          <a class="navbar-link">-->
+<!--            More-->
+<!--          </a>-->
 
-          <div class="navbar-dropdown">
-              <router-link class="navbar-item" to="/user">User</router-link>
-              <router-link to="/admin" class="navbar-item" v-if="showAdminBoard">Admin Board</router-link>
-          </div>
-        </div>
+<!--          <div class="navbar-dropdown">-->
+<!--              <router-link class="navbar-item" to="/user">User</router-link>-->
+<!--              <router-link to="/admin" class="navbar-item" v-if="showAdminBoard">Admin Board</router-link>-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
 
       <div class="navbar-end">
@@ -42,7 +43,7 @@
             <router-link to="/login" class="button is-light">Login</router-link>
           </div>
           <div class="buttons" v-if="currentUser">
-            <router-link to="/profile" class="button is-primary">{{ currentUser.username }}</router-link>
+            <router-link to="/userInfo" class="button is-primary">{{ currentUser.username }}</router-link>
             <a @click.prevent="logOut" class="button is-light">LogOut</a>
           </div>
         </div>

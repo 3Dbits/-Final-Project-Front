@@ -30,7 +30,7 @@ export default {
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/profile");
+      this.$router.push("/userInfo");
     }
   },
   methods: {
@@ -39,7 +39,7 @@ export default {
 
       this.$store.dispatch("auth/login", user).then(
           () => {
-            this.$router.push("/profile");
+            this.$router.push("/userInfo");
           },
           (error) => {
             this.loading = false;
@@ -111,6 +111,9 @@ export default {
   .box {
     max-width: 33%;
     margin: auto;
+  }
+  .section {
+    min-height: 800px;
   }
   @media screen and (max-width: 1200px) {
     .box {
