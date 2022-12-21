@@ -23,7 +23,7 @@ components: {
             <article class="tile is-child notification is-warning">
               <userInfo></userInfo>
 
-              <img src="../components/lista_uredaja.jpg">
+
             </article>
           </article>
         </div>
@@ -38,7 +38,8 @@ components: {
   <div class="tile is-parent">
     <article class="tile is-child notification is-success">
       <div class="content">
-        <h5>My friends</h5>
+        <h5>Following</h5>
+
 
         <FriendList></FriendList>
 

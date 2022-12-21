@@ -45,15 +45,36 @@ export default {
 <template>
   <div>
   <h1>List of Posts</h1>
+    <br>
   <ul>
     <li v-for="post in posts" :key="post.id">
-      <h3> Book title: {{ post.book.title}} </h3>
-      <h5> Post content: {{ post.content }} </h5>
-      <h6> Post author: {{post.userInfo.firstName}} {{post.userInfo.lastName}}</h6>
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img :src=post.book.smallThumbnail>
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <router-link :to="{name: 'PostPage', query: {id: post.id}}">
+            <p>
+              <small>{{post.userInfo.firstName}} {{post.userInfo.lastName}}</small>
+              <br>
+              <strong>{{post.book.title}}</strong>
+              <br>
+              {{ post.content }}
+            </p>
+            </router-link>
+            <br>
+          </div>
+        </div>
+      </article>
       <br>
     </li>
   </ul>
-    </div>
+    <p v-if="posts.length === 0">You have not any post,
+      <router-link to="/search">use this link to search books</router-link></p>
+  </div>
 
 
   </template>

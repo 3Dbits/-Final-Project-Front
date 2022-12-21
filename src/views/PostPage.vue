@@ -32,11 +32,11 @@
             <span class="media-right">
 
 
-              <img v-if="isbnParams!==undefined && books[0].smallThumbnail!=='none'" :src=books[0].smallThumbnail alt="bookcover">
-              <img v-if="isbnParams===undefined && post.book?.smallThumbnail==='none'"
+              <img  v-if="isbnParams!==undefined && books[0].smallThumbnail!=='none'" :src=books[0].smallThumbnail alt="bookcover">
+              <img  v-if="isbnParams===undefined && post.book?.smallThumbnail==='none'"
                    alt="dummypicture" src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
 <!--dodala usklicnike prije tocke kako bi nastavio provjeru bez da prvo zna da postoji  -->
-              <img v-if="isbnParams!==undefined && books[0]?.smallThumbnail==='none'"
+              <img  v-if="isbnParams!==undefined && books[0]?.smallThumbnail==='none'"
                    src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
               <img v-if="isbnParams===undefined && post.book?.smallThumbnail!=='none'" :src=post.book?.smallThumbnail alt="bookcover">
             </span>

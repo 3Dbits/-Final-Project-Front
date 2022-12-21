@@ -8,6 +8,7 @@ import PostPage from "@/views/PostPage.vue";
 import SearchPage from "@/views/SearchPage.vue";
 import ProfilePage from "@/views/ProfilePage.vue";
 import PostList from "@/components/PostList.vue";
+import HomePage from "@/views/HomePage.vue";
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")
@@ -21,7 +22,7 @@ const routes = [
     },
     {
         path: "/home",
-        component: Home,
+        component: HomePage,
     },
     {
         path: "/login",

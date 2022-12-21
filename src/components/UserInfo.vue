@@ -6,6 +6,7 @@ export default {
     return {
       user: {},
       userInfos : {},
+      books: {},
     }
   },
   methods: {
@@ -28,9 +29,23 @@ export default {
         console.log("Error=", error);
       }
     },
+    async getBookInfo() {
+      // Fetch or Axios
+      try {
+        // Fetch returns a promise ( asynchronous)
+        let response = await fetch("http://localhost:8080/api/book/search" + this.urlAddOn + this.searchTitle.replace(" ", "+"), {
+          headers: authHeader()
+        });
+        this.books = await response.json();
+        this.noBook = this.books[0] === undefined;
+      } catch (error) {
+        console.log("Error=", error);
+      }
+    },
   },
   created() {
     this.getUserInfos()
+    this.getBookInfo()
   }
 }
 </script>
@@ -45,6 +60,8 @@ export default {
       <span class="user-info__icon">
         <i class="fa fa-user"/>
       </span>
+        <img src="../components/user-avatar.jpg">
+        <br>
       <strong>Name:</strong>
       </h4>
 
@@ -79,7 +96,7 @@ export default {
 						<span class="user-info__icon">
 							<i class="fa fa-book" />
 						</span>
-        <strong>Favorite book:</strong>
+        <strong>Favorite book ( ISBN ):</strong>
       </h4>
       <p class="user-info__data">
         {{userInfos.bookId}}

@@ -28,6 +28,7 @@ export default {
 </script>
 
 <template>
+
   <div class="user-info__item">
     <h4 class="user-info__detail">
 						<span class="user-info__icon">
@@ -37,6 +38,7 @@ export default {
 
   </div>
   <div class="user-list__wrapper page-inner">
+
     <transition-group
         tag="ul"
         name="slide"
@@ -46,6 +48,8 @@ export default {
         {{ friend.firstName }} {{friend.lastName}}
       </li>
     </ul>
+      <p v-if="friends.length === 0">You are not following anybody,
+        <router-link to="/friends">use this link to follow user</router-link></p>
     </transition-group>
   </div>
 </template>
