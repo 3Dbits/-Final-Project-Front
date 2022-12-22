@@ -39,7 +39,7 @@
               <nav class="level is-mobile">
                 <div class="level-left">
                   <a class="level-item" aria-label="like">
-            <span class="icon is-small" @click="like(post.id)">
+            <span class="icon is-small" @click="like(post.id, post.likes)">
               <font-awesome-icon icon="fa-solid fa-hand-holding-heart"/>
             </span>
                   </a>
@@ -100,9 +100,9 @@ export default {
       }
       this.loading = true;
     },
-    async like(idPost) {
+    async like(idPost, numOfLikes) {
       // Fetch or Axios
-      if (this.isLiked) {
+      if (this.isLiked && numOfLikes > 0) {
         this.dislike(idPost);
       } else {
         try {
