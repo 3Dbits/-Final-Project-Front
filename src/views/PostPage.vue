@@ -103,7 +103,7 @@
                         <label class="label is-medium" for="post">Write Post about : <strong>{{
                             books[0]?.title
                           }}</strong></label>
-                        <textarea id="content" v-model="newPost.content" class="textarea input is-warning "></textarea>
+                        <textarea id="content" v-model="newPost.content" class="textarea input is-primary "></textarea>
                       </div>
                       <input class="btn btn-primary w-100 rounded mt-2 is-alt" type="submit" value="Create New Post">
                     </form>
@@ -136,7 +136,7 @@
                     <form @submit.prevent="getComment">
                       <div class="field">
                         <label class="label is-medium" for="post">Comment Post about : {{ post.book?.title }} </label>
-                        <textarea id="content" v-model="comment.content" class="textarea2 input is-warning "></textarea>
+                        <textarea id="content" v-model="comment.content" class="textarea2 input is-primary "></textarea>
                       </div>
                       <input class="btn btn-primary w-100 rounded mt-2 is-alt" type="submit" value="Send now"/>
                     </form>
@@ -192,30 +192,6 @@
     </div>
   </section>
 
-<!--
-
-  //////////////////////////////////////////
-  <div class="menu">
-    <div class="column is-full">
-      <a class="yellow" href="#">Home</a>
-      <a class="green" href="#">Blog</a>
-      <a class="pink" href="#">Kureshki</a>
-      <a class="purple" href="#">Themes</a>
-      <a class="blue" href="#">Madenca</a>
-      <a class="orange" href="#">Contact</a>
-      <a class="darkPurple" href="#">Contact</a>
-      <a class="limeShadow" href="#">Contact</a>
-      <a class="greenYellow" href="#">Contact</a>
-      <a class="tealShadow" href="#">Contact</a>
-      <a class="redShadow" href="#">Contact</a>
-      <a class="darkPurpleBrown" href="#">Contact</a>
-      <a class="cyan" href="#">Contact</a>
-      <a class="beige" href="#">Contact</a>
-      <a class="green" href="#">Blog</a>
-      <a class="blueShadow" href="#">Contact</a>
-    </div>
-  </div>
--->
 
 </template>
 <script>
@@ -353,15 +329,6 @@ a {
   margin: 30px auto;
 }
 
-.menu a {
-  width: 260px;
-  line-height: 260px;
-  display: block;
-  margin: 5px;
-  text-align: center;
-  float: left;
-  opacity: 0.3;
-}
 
 @media (min-width: 500px) {
   .media {
@@ -415,38 +382,28 @@ a {
 }
 
 .btn-primary {
-  background: #ce8460;
+  background: #0fb59d;
   color: #fff;
-  border-color: #ce8460;
+  border-color: #89c4bb;
 }
 
 .btn-primary:active, .btn-primary:hover, .btn-primary.focus, .btn-primary.active {
-  background: #ce8460 !important;
-  border-color: #ce8460 !important;
+  background: #00c4a7 !important;
+  border-color: #00e6c4 !important;
 }
 
 .btn-outline-primary {
   background: transparent;
-  color: #696c6d;
-  border-color: #ce8460;
+  color: #0fb59d;
+  border-color: #89c4bb;
 }
 
 .btn-outline-primary:active, .btn-outline-primary:hover, .btn-outline-primary.focus, .btn-outline-primary.active {
-  background: #ce8460 !important;
-  border-color: #ce8460 !important;
+  background: #00c4a7 !important;
+  border-color: #00e6c4 !important;
   color: #fff;
 }
 
-.btn-outline-light {
-  background: transparent;
-  color: #696c6d;
-  border-color: #ddd;
-}
-
-.btn-outline-light:active, .btn-outline-light:hover, .btn-outline-light.focus, .btn-outline-light.active {
-  background: #f0f0f0 !important;
-  border-color: #ddd !important;
-}
 
 body {
   background-color: #fff;
@@ -470,66 +427,5 @@ body {
   color: #fff;
 }
 
-.yellow {
-  background: #fdd22a;
-}
 
-.blue {
-  background: #009fe3;
-}
-
-.purple {
-  background: #574696;
-}
-
-.orange {
-  background: #ee7202;
-}
-
-.pink {
-  background: #e61c67;
-}
-
-.green {
-  background: #96c11f;
-}
-
-.tealShadow {
-  background: rgba(0, 174, 239, 0.5);
-}
-
-.darkPurple {
-  background: rgba(236, 0, 140, 0.3);
-}
-
-.limeShadow {
-  background: rgba(141, 198, 63, 0.5);
-}
-
-.greenYellow {
-  background: rgba(255, 242, 0, 0.5);
-}
-
-.redShadow {
-  background: rgba(237, 28, 36, 0.5);
-}
-
-.darkPurpleBrown {
-  background: rgba(102, 45, 145, 0.3);
-}
-
-.cyan {
-  background: rgba(237, 28, 290, 0.5);
-}
-
-.beige {
-  background: rgba(252, 176, 64, 0.5);
-}
-
-.blueShadow {
-  background: rgba(0, 174, 239, 0.5);
-}
-section {
-  min-height: 450px;
-}
 </style>
