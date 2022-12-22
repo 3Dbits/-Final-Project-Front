@@ -20,7 +20,7 @@ components: {
       <div class="tile is-vertical is-8">
         <div class="tile">
           <div class="tile is-parent is-vertical">
-            <article class="tile is-child notification has-background-info">
+            <article class="tile is-child notification has-background-info-light">
               <article class="tile is-child notification has-background-info-light">
                 <userInfo></userInfo>
 
