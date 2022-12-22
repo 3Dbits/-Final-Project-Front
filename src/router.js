@@ -6,7 +6,6 @@ import IndexPage from "@/views/IndexPage.vue";
 import UserInfo from "@/components/UserInfo.vue";
 import PostPage from "@/views/PostPage.vue";
 import Search from "@/components/Search.vue";
-import HomePage from "@/views/HomePage.vue";
 import SearchPage from "@/views/SearchPage.vue";
 import FriendsPage from "@/views/FriendsPage.vue";
 import ProfilePage from "@/views/ProfilePage.vue";
