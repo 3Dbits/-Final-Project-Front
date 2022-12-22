@@ -1,21 +1,21 @@
 <template>
-  <nav class="navbar is-white">
+<!--  <nav class="navbar is-white">-->
 
-    <div class="container">
+<!--    <div class="container">-->
 
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <a class="btn btn-outline-primary">Popular</a>
-          <a class="btn btn-outline-primary">Latest</a>
-          <a class="btn btn-outline-primary">Rising</a>
-        <div class="navbar-end">
-        <div class="navbar-item">
-        </div>
-        </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+<!--      <div class="navbar-menu">-->
+<!--        <div class="navbar-start">-->
+<!--          <a class="btn btn-outline-primary">Popular</a>-->
+<!--          <a class="btn btn-outline-primary">Latest</a>-->
+<!--          <a class="btn btn-outline-primary">Rising</a>-->
+<!--        <div class="navbar-end">-->
+<!--        <div class="navbar-item">-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </nav>-->
 
   <!--slika unutar aside classa-->
   <section class="container">
@@ -32,35 +32,46 @@
             <span class="media-right">
 
 
-              <img v-if="isbnParams!==undefined && books[0].smallThumbnail !== 'none'" :src=books[0].smallThumbnail alt="bookcover">
-              <img v-if="isbnParams===undefined && post.book.smallThumbnail === 'none'"
-                   alt="dummypicture" src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
-<!--&#45;&#45;dodala usklicnike prije tocke kako bi nastavio provjeru bez da prvo zna da postoji  ima&#45;&#45;-->
-              <img v-if="isbnParams!==undefined && books[0]?.smallThumbnail === 'none'"
-                   alt="dummypicture" src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
-              <img v-if="isbnParams===undefined && post.book?.smallThumbnail !== 'none'" :src=post.book.smallThumbnail alt="bookcover">
+              <img v-if="isbnParams!==undefined && books[0].smallThumbnail!=='none'" :src=books[0].smallThumbnail
+                   alt="bookcover">
+              <img v-if="isbnParams===undefined && post.book?.smallThumbnail==='none'"
+                   alt="dummypicture"
+                   src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
+              <!--dodala usklicnike prije tocke kako bi nastavio provjeru bez da prvo zna da postoji  -->
+              <img v-if="isbnParams!==undefined && books[0]?.smallThumbnail==='none'"
+                   src="https://www.mswordcoverpages.com/wp-content/uploads/2018/10/Book-cover-page-1-CRC.png">
+              <img v-if="isbnParams===undefined && post.book?.smallThumbnail!=='none'" :src=post.book?.smallThumbnail
+                   alt="bookcover">
             </span>
             </li>
 
-            <section v-for="book in books" :key="book.id" v-if="isbnParams!==undefined">
+            <section v-for="book in books" v-if="isbnParams!==undefined" :key="book.id">
               <li><span class="btn btn-outline-primary ">Title: {{ book.title }}</span></li>
               <li><span class="btn btn-outline-primary ">Publisher: {{ book.publisher }}</span></li>
               <li><span class="btn btn-outline-primary ">Page number: {{ book.pageNumber }}</span></li>
               <li><span class="btn btn-outline-primary ">Language : {{ book.language }}</span></li>
-              <a v-if="book.pdf!=null" :href= book.pdf>eBook : </a>
+              <a v-if="book.pdf!=undefined" :href=book.pdf target="_blank">
+                <figure class="image is-64x64">
+                  <img alt="Image"
+                       src=" https://cdn1.iconfinder.com/data/icons/education-flat-icons-shadow/96/50-512.png"/>
+                </figure>
+              </a>
             </section>
-
 
 
             <section v-if="isbnParams===undefined">
-              <li><span class="btn btn-outline-primary ">Title: {{ post.book.title }}</span></li>
-              <li><span class="btn btn-outline-primary ">Publisher : {{ post.book.publisher }}</span></li>
-              <li><span class="btn btn-outline-primary ">Page number : {{ post.book.pageNumber }}</span></li>
-              <li><span class="btn btn-outline-primary ">Language : {{ post.book.language }}</span></li>
-              <a v-if="post.book.pdf!=null" :href= post.book.pdf>eBook : </a>
+              <li><span class="btn btn-outline-primary ">Title: {{ post.book?.title }}</span></li>
+              <li><span class="btn btn-outline-primary ">Publisher : {{ post.book?.publisher }}</span></li>
+              <li><span class="btn btn-outline-primary ">Page number : {{ post.book?.pageNumber }}</span></li>
+              <li><span class="btn btn-outline-primary ">Language : {{ post.book?.language }}</span></li>
+              <a v-if="post.book?.pdf!=undefined" :href=post.book?.pdf target="_blank">
+                <figure class="image is-64x64">
+                  <img alt="Image"
+                       src="https://cdn1.iconfinder.com/data/icons/education-flat-icons-shadow/96/50-512.png"/>
+                </figure>
+              </a>
             </section>
           </ul>
-
         </aside>
       </div>
 
@@ -71,53 +82,51 @@
             <span style="text-align: center">
                <br>
             <h1>{{ books[0]?.title }}</h1>
-             <h1>  {{$route.params.id}}</h1>
-            <p>{{ post.content }}</p>
+             <h1>{{ post.book?.title }}</h1>
+             <h1>  {{ $route.params.id }}</h1>
+            <h3>{{ post.content }}</h3>
 
 
-              /////////////////////////
+              <!--              /////POST//////-->
 
                <br>
               </span>
             <div class="media">
 
               <div class="content">
-                    <div v-if="post === undefined">
-                      <div class="column md-6">
-                        <form action="#" method="POST">
-                          <div class="field">
-                            <label class="label is-medium" for="post">Write Post about : {{ books[0].title }}</label>
-                            <textarea id="post" class="textarea input is-warning " name="post"></textarea>
-                          </div>
-                          <a class="btn btn-primary w-100 rounded mt-2 is-alt" href="#" type="submit">Create New
-                            Post</a>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <div class="media">
-
-              <div class="content">
-                <div v-if="post !== undefined">
+                <!--                ///ako nema posta otvori box za upis novog post////////////-->
+                <div v-if="postParams === undefined">
                   <div class="column md-6">
-                    {{ post.content }}
+                    <form @submit.prevent="setPost">
+                      <div class="field">
+                        <label class="label is-medium" for="post">Write Post about : <strong>{{
+                            books[0]?.title
+                          }}</strong></label>
+                        <textarea id="content" v-model="newPost.content" class="textarea input is-warning "></textarea>
+                      </div>
+                      <input class="btn btn-primary w-100 rounded mt-2 is-alt" type="submit" value="Create New Post">
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
+<!--            <div class="media">-->
+
+<!--              <div class="content">-->
+<!--                <div v-if="post !== undefined">-->
+<!--                  <div class="column md-6">-->
+<!--                    {{ post.content }}-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
           </article>
 
-
           <!--          Comments-->
-
-
-          <div v-if="postParams === ''" class="box content" style="margin: auto">
+          <div v-if="postParams !==undefined" class="box content" style="margin: auto">
             <article class="post">
             <span style="text-align: center">
-               <br>
             <h1>{{ books[0]?.title }}</h1>
-               <br>
               </span>
               <div class="media">
 
@@ -125,59 +134,55 @@
                   <div class="column md-6">
                     <form @submit.prevent="getComment">
                       <div class="field">
-                        <label class="label is-medium" for="post">Comment Post about : {{ books[0]?.title }}</label>
-                        <textarea id="content"  class="textarea2 input is-warning " v-model="comment.content"></textarea>
+                        <label class="label is-medium" for="post">Comment Post about : {{ post.book?.title }} </label>
+                        <textarea id="content" v-model="comment.content" class="textarea2 input is-warning "></textarea>
                       </div>
-                      <input class="btn btn-primary w-100 rounded mt-2 is-alt"  type="submit" value="Send now"/>
+                      <input class="btn btn-primary w-100 rounded mt-2 is-alt" href="#" type="submit" value="Send now"/>
                     </form>
                   </div>
                 </div>
               </div>
             </article>
 
-            <div>
-              <p v-for="commentFrompost in post.comments">
-                {{commentFrompost.content}}
-              </p>
-            </div>
-
-
-            <div class="box">
+            <div v-for="commentFromPost in post.comments.reverse()" :key="post.comments" class="box">
               <article class="media">
                 <div class="media-left">
                   <figure class="image is-64x64">
-                    <img alt="Image" src="https://bulma.io/images/placeholders/128x128.png">
+                    <img alt="Image"
+                         src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/61f1b112-2cb0-40b0-a6b9-9ab92066e5c7/d33mwsf-0dd81126-6d91-4b0d-905c-886a1a41566c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYxZjFiMTEyLTJjYjAtNDBiMC1hNmI5LTlhYjkyMDY2ZTVjN1wvZDMzbXdzZi0wZGQ4MTEyNi02ZDkxLTRiMGQtOTA1Yy04ODZhMWE0MTU2NmMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L1TKNejYQvgjxpf-RG78w_VWYwPL4obeec-BqOB-gmw">
                   </figure>
                 </div>
                 <div class="media-content">
                   <div class="content">
                     <p>
-                      <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                      <strong>{{ commentFromPost.user.firstName }} {{ commentFromPost.user.lastName }}</strong>
+                      <small>{{ commentFromPost.user.username }}</small>
+                      <small>{{ post.comment }}</small>
                       <br>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla
-                      egestas. Nullam condimentum luctus turpis.
+                      <span>{{ commentFromPost.content }}</span>
+
                     </p>
                   </div>
-                  <nav class="level is-mobile">
-                    <div class="level-left">
-                      <a aria-label="reply" class="level-item">
-            <span class="icon is-small">
-              <i aria-hidden="true" class="fas fa-reply"></i>
-            </span>
-                      </a>
-                      <a aria-label="retweet" class="level-item">
+                </div>
+                <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a aria-label="reply" class="level-item">
+                      <span class="icon is-small">
+                      <i aria-hidden="true" class="fas fa-reply"></i>
+                      </span>
+                    </a>
+                    <a aria-label="retweet" class="level-item">
             <span class="icon is-small">
               <i aria-hidden="true" class="fas fa-retweet"></i>
             </span>
-                      </a>
-                      <a aria-label="like" class="level-item">
+                    </a>
+                    <a aria-label="like" class="level-item">
             <span class="icon is-small">
               <i aria-hidden="true" class="fas fa-heart"></i>
             </span>
-                      </a>
-                    </div>
-                  </nav>
-                </div>
+                    </a>
+                  </div>
+                </nav>
               </article>
             </div>
           </div>
@@ -186,6 +191,7 @@
     </div>
   </section>
 
+<!--
 
   //////////////////////////////////////////
   <div class="menu">
@@ -208,8 +214,7 @@
       <a class="blueShadow" href="#">Contact</a>
     </div>
   </div>
-  <!--  <footer class="footer">-->
-  <!--    </footer>-->
+-->
 
 </template>
 <script>
@@ -227,10 +232,17 @@ export default {
       isbnParams: undefined,
       CommentList: [],
       comment: {
-        content:""
+        content: ""
       },
       comment2: Object,
-
+      PostList: [],
+      post1: {
+        content: ""
+      },
+      post2: Object,
+      newPost: {
+        content: "",
+      },
 
     };
   },
@@ -252,7 +264,7 @@ export default {
       try {
         // Fetch returns a promise ( asynchronous)
         let response1 = await fetch("/api/post/" + this.postParams, {
-          headers: authHeader()
+          headers: authHeader(),
         });
         this.post = await response1.json();
       } catch (error) {
@@ -264,18 +276,37 @@ export default {
       try {
         // Fetch returns a promise ( asynchronous)
         let response2 = await fetch("/api/comment/" + this.postParams, {
-              method: "POST",
-              headers: authHeader(),
-              body: JSON.stringify({
-                content: this.comment.content
-              }),
-            });
+          method: "POST",
+          headers: authHeader(),
+          body: JSON.stringify({
+            content: this.comment.content
+          }),
+        });
         this.comment2 = await response2.json();
         this.getPosts();
       } catch (error) {
         console.log("Error=", error);
       }
     },
+    async setPost() {
+      // Fetch or Axios
+      try {
+        // Fetch returns a promise ( asynchronous)
+        let response3 = await fetch("/api/post/addNew?bookIsbn=" + this.isbnParams, {
+          method: "POST",
+          headers: authHeader(),
+          body: JSON.stringify({
+            content: this.newPost.content,
+          }),
+        });
+        this.goHome();
+      } catch (error) {
+        console.log("Error=", error);
+      }
+    },
+    goHome() {
+      this.$router.push("/home");
+    }
   },
   created() {
     // this.getBooks();
@@ -283,8 +314,11 @@ export default {
     console.log(this.$route.query.isbn);
     this.postParams = this.$route.query.id;
     this.isbnParams = this.$route.query.isbn;
-    if(this.postParams!== undefined){this.getPosts() }
-    else {this.getBooks()};
+    if (this.postParams !== undefined) {
+      this.getPosts()
+    } else {
+      this.getBooks()
+    }
   },
 }
 

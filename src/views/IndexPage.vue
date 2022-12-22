@@ -20,19 +20,15 @@
           <img src="/Screenshot_358.png" id="firstpic">
         </div>
         <div>
-          <br>
-          <br>
-          <br>
-          <br>
+          <br><br><br><br><br><br><br><br><br><br>
           <h1 class="indexText">
             Search for your favorite books with our new search function.
           </h1>
         </div>
         <div>
-          <br>
-          <br>
-          <h1 class="indexText">
-            Tell your friends what you think about book and find inspiration four your new book.
+          <br><br><br><br><br><br>
+          <h1 class="indexText" id="rightspace">
+            Tell your friends what you think about book and find inspiration for your new book.
           </h1>
         </div>
         <div class="item2">
@@ -72,10 +68,12 @@ img {
   text-align: center;
 }
 .container3 {
-  background-color: #fff;
-  background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-  linear-gradient(#eee .1em, transparent .1em);
-  background-size: 100% 1.2em;
+  /*background-color: #fff;*/
+  /*background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),*/
+  /*linear-gradient(#eee .1em, transparent .1em);*/
+  /*background-size: 100% 1.2em;*/
+  background-color: #ffffff;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #ffffff 9px ), repeating-linear-gradient( #c2c2c255, #c2c2c2 );
 }
 .widthSet {
   /*max-width: 80%;*/
@@ -132,11 +130,15 @@ img {
   font-weight: bolder;
   font-family: "Helvetica Neue",fantasy;
   font-size: xx-large;
-  align-content: center;
+  /*align-content: center;*/
+  max-width: 60%;
 }
 #firstpic {
   max-width: 80%;
   box-shadow: 1px 1px 2px gray;
+}
+#rightspace {
+  text-align: right;
 }
 
 @media screen and (max-width: 800px) {

@@ -50,6 +50,10 @@ export default {
       isHovering1: false,
       isHovering2: false,
       isHovering3: false,
+      isHovering4: false,
+      isHovering5: false,
+      isHovering6: false,
+      isHovering7: false,
     };
   },
   computed: {
@@ -59,7 +63,7 @@ export default {
   },
   mounted() {
     if (this.loggedIn) {
-      this.$router.push("/profile");
+      this.$router.push("/userInfo");
     }
   },
   methods: {
@@ -92,11 +96,18 @@ export default {
 
 <template>
 
-  <section class="section is-medium">
+  <section class="section">
     <Form :validation-schema="schema" class="box" @submit="handleRegister">
 
       <div class="field">
-        <div v-if="message" class="notification is-danger" role="alert">
+        <div v-if="message && message !== 'User registered successfully!'" class="notification is-danger" role="alert">
+          <button class="delete" @click='message = ""'></button>
+          {{ message }}
+        </div>
+      </div>
+
+      <div class="field">
+        <div v-if="message === 'User registered successfully!'" class="notification is-primary" role="alert">
           <button class="delete" @click='message = ""'></button>
           {{ message }}
         </div>
