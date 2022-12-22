@@ -20,8 +20,8 @@ components: {
       <div class="tile is-vertical is-8">
         <div class="tile">
           <div class="tile is-parent is-vertical">
-            <article class="tile is-child notification has-background-danger-light">
-              <article class="tile is-child notification  has-background-primary-light">
+            <article class="tile is-child notification has-background-info">
+              <article class="tile is-child notification has-background-info-light">
                 <userInfo></userInfo>
 
             </article>
@@ -29,14 +29,14 @@ components: {
         </div>
       </div>
     </div>
-    <article class="tile is-child notification has-background-link-light">
+    <article class="tile is-child notification has-background-danger-light">
       <h5>Following</h5>
       <FriendList></FriendList>
 
     </article>
   </div>
   <div class="tile is-parent">
-    <article class="tile is-child notification has-background-success-light">
+    <article class="tile is-child notification has-background-primary-light">
       <div class="content">
 
 
@@ -94,5 +94,4 @@ components: {
   border-color: #00e6c4 !important;
   color: #fff;
 }
-
 </style>
