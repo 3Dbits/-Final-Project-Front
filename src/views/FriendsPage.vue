@@ -16,14 +16,16 @@
         <form novalidate @submit.prevent="getUser">
           <div class="panel-block">
             <p class="control has-icons-left">
-              <input id="searchUsername" v-model="searchUsername" class="input" placeholder="Search username"
+              <input id="searchUsername" v-model="searchUsername" class="input is-primary" placeholder="Search username"
                      type="text">
               <span class="icon is-left">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
       </span>
             </p>
           </div>
-
+          <p class="panel-tabs">
+            <a>Username</a>
+          </p>
           <a class="panel-block is-active" v-for="user in users" @click="addFriend(user.id)">
           <span class="panel-icon">
        <img src="https://ps.w.org/add-to-any/assets/icon-256x256.png?rev=972738" alt="bookcover">

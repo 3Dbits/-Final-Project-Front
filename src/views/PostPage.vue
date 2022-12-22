@@ -145,7 +145,7 @@
               </div>
             </article>
 
-            <div v-for="commentFromPost in post.comments.reverse()"  class="box">
+            <div v-for="commentFromPost in post.comments"  class="box">
               <article class="media">
                 <div class="media-left">
                   <figure class="image is-64x64">
@@ -268,6 +268,7 @@ export default {
           headers: authHeader(),
         });
         this.post = await response1.json();
+        this.post.comments.reverse();
       } catch (error) {
         console.log("Error=", error);
       }
@@ -528,5 +529,7 @@ body {
 .blueShadow {
   background: rgba(0, 174, 239, 0.5);
 }
-
+section {
+  min-height: 450px;
+}
 </style>
