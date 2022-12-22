@@ -15,7 +15,7 @@
         <!--      </div>-->
         <!--    </div>-->
         <!--    /////////////-->
-        <router-link :to="{name: 'PostPage', query: {id: post.id}}">
+<!--        <router-link :to="{name: 'PostPage', query: {id: post.id}}">-->
           <article class="media">
             <div class="media-left">
               <figure class="image is-64x64">
@@ -23,7 +23,8 @@
               </figure>
             </div>
             <div class="media-content">
-              <div class="content">
+              <router-link :to="{name: 'PostPage', query: {id: post.id}}">
+              <div class="content" >
                 <p>
                   <strong>{{ post.book.title }}</strong> by <strong
                     v-for="author in post.book.authors">{{ author.name }}</strong>
@@ -34,23 +35,24 @@
                   {{ post.content }}
                 </p>
               </div>
+              </router-link>
               <nav class="level is-mobile">
                 <div class="level-left">
                   <a class="level-item" aria-label="like">
-            <span class="icon is-small">
+            <span class="icon is-small" @click="like(post.id)">
               <font-awesome-icon icon="fa-solid fa-hand-holding-heart"/>
             </span>
                   </a>
                   <a class="level-item" aria-label="like">
             <span class="icon is-small">
-              10
+              {{ post.likes }}
             </span>
                   </a>
                 </div>
               </nav>
             </div>
           </article>
-        </router-link>
+<!--        </router-link>-->
       </div>
     </div>
     <div class="box" v-if="posts.length === 0 & loading">
@@ -79,6 +81,7 @@ export default {
     return {
       posts: [],
       loading: false,
+      isLiked: false,
     };
   },
   methods: {
@@ -96,6 +99,38 @@ export default {
         console.log("Error=", error);
       }
       this.loading = true;
+    },
+    async like(idPost) {
+      // Fetch or Axios
+      if (this.isLiked) {
+        this.dislike(idPost);
+      } else {
+        try {
+          // Fetch returns a promise ( asynchronous)
+          let response3 = await fetch("/api/post/like/" + idPost, {
+            method: "POST",
+            headers: authHeader(),
+          });
+          this.getBooks();
+          this.isLiked = true;
+        } catch (error) {
+          console.log("Error=", error);
+        }
+      }
+    },
+    async dislike(idPost2) {
+      // Fetch or Axios
+      try {
+        // Fetch returns a promise ( asynchronous)
+        let response3 = await fetch("/api/post/dislike/" + idPost2, {
+          method: "POST",
+          headers: authHeader(),
+        });
+        this.getBooks();
+        this.isLiked = false;
+      } catch (error) {
+        console.log("Error=", error);
+      }
     },
   },
   created() {

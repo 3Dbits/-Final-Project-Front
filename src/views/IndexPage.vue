@@ -17,16 +17,16 @@
       <div class="gridSet">
         <div class="item1">
           <!--        add style to see 2 rows, need to be removed-->
-          <img src="/Screenshot_358.png" id="firstpic">
+          <img src="/Screenshot_360.png" id="firstpic">
         </div>
         <div>
-          <br><br><br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br>
           <h1 class="indexText">
             Search for your favorite books with our new search function.
           </h1>
         </div>
         <div>
-          <br><br><br><br><br><br>
+          <br><br><br><br>
           <h1 class="indexText" id="rightspace">
             Tell your friends what you think about book and find inspiration for your new book.
           </h1>
@@ -81,6 +81,7 @@ img {
 .gridSet {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 20px;
 }
 .container3 div {
   text-align: center;
@@ -136,9 +137,11 @@ img {
 #firstpic {
   max-width: 80%;
   box-shadow: 1px 1px 2px gray;
+  border-radius: 20px;
 }
 #rightspace {
-  text-align: right;
+  /*text-align: right;*/
+  margin-left: 270px;
 }
 
 @media screen and (max-width: 800px) {

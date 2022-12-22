@@ -61,6 +61,7 @@
 
             <section v-if="isbnParams===undefined">
               <li><span class="btn btn-outline-primary ">Title: {{ post.book?.title }}</span></li>
+              <li><span class="btn btn-outline-primary ">Author: {{ post.book?.authors[0].name }}</span></li>
               <li><span class="btn btn-outline-primary ">Publisher : {{ post.book?.publisher }}</span></li>
               <li><span class="btn btn-outline-primary ">Page number : {{ post.book?.pageNumber }}</span></li>
               <li><span class="btn btn-outline-primary ">Language : {{ post.book?.language }}</span></li>

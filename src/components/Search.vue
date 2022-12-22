@@ -122,7 +122,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
+  /*width: 100%;*/
 }
 #maxheightset {
   min-height: 700px;
