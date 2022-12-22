@@ -1,48 +1,51 @@
 <template>
-  <br>
-  <div class="field">
-    <div v-if="friendAdded" class="notification is-primary" role="alert">
-      <button class="delete" @click='goHome'></button>
-      Successfully followed user {{users[0].username}}!
+  <div id="minheight">
+    <br>
+    <div class="field">
+      <div v-if="friendAdded" class="notification is-primary" role="alert">
+        <button class="delete" @click='goHome'></button>
+        Successfully followed user {{ users[0].username }}!
+      </div>
     </div>
-  </div>
 
-  <div class="searchForm" v-if="!friendAdded">
-    <nav class="panel">
-      <p class="panel-heading">
-        Search:
-      </p>
-      <form novalidate @submit.prevent="getUser">
-        <div class="panel-block">
-          <p class="control has-icons-left">
-            <input id="searchUsername" v-model="searchUsername" class="input" placeholder="Search username" type="text">
-            <span class="icon is-left">
+    <div class="searchForm" v-if="!friendAdded">
+      <nav class="panel is-primary">
+        <p class="panel-heading">
+          Search:
+        </p>
+        <form novalidate @submit.prevent="getUser">
+          <div class="panel-block">
+            <p class="control has-icons-left">
+              <input id="searchUsername" v-model="searchUsername" class="input" placeholder="Search username"
+                     type="text">
+              <span class="icon is-left">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
       </span>
-          </p>
-        </div>
+            </p>
+          </div>
 
-        <a class="panel-block is-active" v-for="user in users" @click="addFriend(user.id)">
+          <a class="panel-block is-active" v-for="user in users" @click="addFriend(user.id)">
           <span class="panel-icon">
        <img src="https://ps.w.org/add-to-any/assets/icon-256x256.png?rev=972738" alt="bookcover">
         </span>
-          <div><strong>Name: </strong>{{ user.userInfo.firstName }} {{ user.userInfo.lastName }}</div>
-          <div><strong>
-            Username: </strong>{{ user.username }}
+            <div><strong>Name: </strong>{{ user.userInfo.firstName }} {{ user.userInfo.lastName }}</div>
+            <div><strong>
+              Username: </strong>{{ user.username }}
+            </div>
+          </a>
+
+          <a v-if="noUser" class="panel-block is-active">
+            <strong>No user found! </strong>
+          </a>
+
+          <div class="panel-block">
+            <button class="button is-primary is-outlined is-fullwidth" type="submit">
+              <strong>Search</strong>
+            </button>
           </div>
-        </a>
-
-        <a v-if="noUser" class="panel-block is-active">
-          <strong>No user found! </strong>
-        </a>
-
-        <div class="panel-block">
-          <button class="button is-link is-outlined is-fullwidth" type="submit">
-            Search
-          </button>
-        </div>
-      </form>
-    </nav>
+        </form>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -110,5 +113,8 @@ export default {
 .searchForm, .field {
   max-width: 50%;
   margin: auto;
+}
+#minheight {
+  min-height: 750px;
 }
 </style>

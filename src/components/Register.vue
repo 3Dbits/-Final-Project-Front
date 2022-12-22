@@ -210,7 +210,7 @@ export default {
             <span
                 v-show="loading"
             ></span>
-            <span>Sign Up</span>
+            <span><strong>Sign Up</strong></span>
           </button>
         </p>
 

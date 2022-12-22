@@ -3,7 +3,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" >
         <router-link to="/">
-        <img src="/imgbin_book-png.png" width="112" height="28">
+        <img src="/Screenshot_362.png" width="112" height="28">
         </router-link>
       </a>
 
@@ -37,14 +37,14 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons" v-if="!currentUser">
-            <router-link to="/register" class="button is-primary">
+            <router-link to="/register" class="button is-primary is-rounded">
               <strong>Sign Up</strong>
             </router-link>
-            <router-link to="/login" class="button is-light">Login</router-link>
+            <router-link to="/login" class="button is-light is-rounded">Login</router-link>
           </div>
           <div class="buttons" v-if="currentUser">
-            <router-link to="/userInfo" class="button is-primary">{{ currentUser.username }}</router-link>
-            <a @click.prevent="logOut" class="button is-light">LogOut</a>
+            <router-link to="/userInfo" class="button is-primary is-rounded"><strong>{{ currentUser.username }}</strong></router-link>
+            <a @click.prevent="logOut" class="button is-light is-rounded">LogOut</a>
           </div>
         </div>
       </div>

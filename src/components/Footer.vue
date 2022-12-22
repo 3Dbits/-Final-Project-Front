@@ -83,6 +83,6 @@ export default {
    padding-left: 5px;
  }
  a:link {
-   color: black;
+   color: rgb(0, 196, 167);
  }
 </style>

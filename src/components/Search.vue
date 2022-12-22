@@ -1,14 +1,14 @@
 <template>
 <br>
   <div class="searchForm" id="maxheightset">
-  <nav class="panel">
+  <nav class="panel is-primary">
     <p class="panel-heading">
       Search:
     </p>
     <form novalidate @submit.prevent="getBooks">
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input class="input" type="text" placeholder="Search" id="searchTitle" v-model="searchTitle">
+        <input class="input is-primary" type="text" placeholder="Search" id="searchTitle" v-model="searchTitle">
         <span class="icon is-left">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
       </span>
@@ -37,8 +37,8 @@
       </a>
 
       <div class="panel-block">
-        <button class="button is-link is-outlined is-fullwidth" type="submit">
-          Search
+        <button class="button is-primary is-outlined is-fullwidth" type="submit">
+          <strong>Search</strong>
         </button>
       </div>
       </form>

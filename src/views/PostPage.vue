@@ -145,7 +145,7 @@
               </div>
             </article>
 
-            <div v-for="commentFromPost in post.comments.reverse()" :key="post.comments" class="box">
+            <div v-for="commentFromPost in post.comments.reverse()"  class="box">
               <article class="media">
                 <div class="media-left">
                   <figure class="image is-64x64">
