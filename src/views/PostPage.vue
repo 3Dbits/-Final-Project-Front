@@ -138,7 +138,7 @@
                         <label class="label is-medium" for="post">Comment Post about : {{ post.book?.title }} </label>
                         <textarea id="content" v-model="comment.content" class="textarea2 input is-warning "></textarea>
                       </div>
-                      <input class="btn btn-primary w-100 rounded mt-2 is-alt" href="#" type="submit" value="Send now"/>
+                      <input class="btn btn-primary w-100 rounded mt-2 is-alt" type="submit" value="Send now"/>
                     </form>
                   </div>
                 </div>

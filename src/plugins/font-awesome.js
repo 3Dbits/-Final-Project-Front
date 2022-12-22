@@ -15,7 +15,8 @@ import {
     faHandHoldingHeart,
     faUserTag,
     faCalendarDays,
-    faBookOpenReader
+    faBookOpenReader,
+    faComments
 } from "@fortawesome/free-solid-svg-icons";
 import {
     faSquareTwitter,
@@ -49,7 +50,8 @@ library.add(
     faHandHoldingHeart,
     faUserTag,
     faCalendarDays,
-    faBookOpenReader
+    faBookOpenReader,
+    faComments
 );
 
 export { FontAwesomeIcon };
